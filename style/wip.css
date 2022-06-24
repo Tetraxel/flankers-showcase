@@ -79,12 +79,12 @@ body {
 }
 
 #background1.out {
-    background-position: left -160vh top; /* -1500px */
+    background-position: left -163vh top; /* -1500px */
 }
 
 @keyframes background1Start {
     0% {
-        background-position: left -160vh top;
+        background-position: left -163vh top;
     }
 }
 
@@ -104,12 +104,12 @@ body {
 }
 
 #background2.out {
-    background-position: right -120vh top; /* -1200px */
+    background-position: right -123vh top; /* -1200px */
 }
 
 @keyframes background2Start {
     0% {
-        background-position: right -120vh top;
+        background-position: right -123vh top;
     }
 }
 

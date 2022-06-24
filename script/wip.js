@@ -11,9 +11,9 @@ var switchText2 = document.getElementsByClassName("switchText-2").item(0);
 var switchTextState = 0;
 var slideshow = document.getElementsByClassName("demo");
 var slideshowText = ["Franchement, c'est énorme !",
-                     "Franchement, c'est énorme !",
-                     "On est là pour mettre des cathédrales ^^\"",
-                     "Découvrez TousAntiChômeur"];
+    "Franchement, c'est énorme !",
+    "On est là pour mettre des cathédrales ^^\"",
+    "Découvrez TousAntiChômeur"];
 var slideshowId = 0;
 var firstArgShown = false;
 var slideshowDots = document.getElementsByClassName("slideshow_dot");
@@ -22,7 +22,7 @@ var slideshowDots = document.getElementsByClassName("slideshow_dot");
 // load next background before it shows up
 function loadNextBackground() {
     var img1 = new Image();
-    img1.onload = function() {
+    img1.onload = function () {
         /*console.log("[OK] Next left background loaded : " + nextBackground1);*/
         bgLoaded1 = true;
     }
@@ -30,7 +30,7 @@ function loadNextBackground() {
     img1.src = nextBackground1;
 
     var img2 = new Image();
-    img2.onload = function() {
+    img2.onload = function () {
         /*console.log("[OK] Next right background loaded : " + nextBackground2);*/
         bgLoaded2 = true;
     }
@@ -46,24 +46,31 @@ function backgroundLoop() {
     background2.classList.add("out");
 
     // wait 2500ms to allow bg images to move outside screen
-    setTimeout(function() {
+    setTimeout(function () {
         // assign new bg images
-        background1.style.backgroundImage = "url('" + nextBackground1 + "')";
-        background2.style.backgroundImage = "url('" + nextBackground2 + "')";
+        var delay = background1.style.transitionDelay
+        // we set to none to avoid the chrome transition between images
+        background1.style.backgroundImage = "none"
+        background2.style.backgroundImage = "none"
+        setTimeout(function () {
+            background1.style.backgroundImage = "url('" + nextBackground1 + "')";
+            background2.style.backgroundImage = "url('" + nextBackground2 + "')";
+            // background1.style.transitionDelay = delay
 
-        // wait for the background to be loaded
-        function waitBackgroundLoading() {
-            if (bgLoaded1 && bgLoaded2) {
-                bgLoaded1 = false;
-                bgLoaded2 = false;
-                background1.classList.remove("out");
-                background2.classList.remove("out");
-                loadNextBackground();
-                setTimeout(backgroundLoop, 7000); //loop
-            } else
-                setTimeout(waitBackgroundLoading, 200);
-        }
-        waitBackgroundLoading();
+            // wait for the background to be loaded
+            function waitBackgroundLoading() {
+                if (bgLoaded1 && bgLoaded2) {
+                    bgLoaded1 = false;
+                    bgLoaded2 = false;
+                    background1.classList.remove("out");
+                    background2.classList.remove("out");
+                    loadNextBackground();
+                    setTimeout(backgroundLoop, 7000); // loop
+                } else
+                    setTimeout(waitBackgroundLoading, 200);
+            }
+            waitBackgroundLoading();
+        }, 10);
     }, 1600);
 }
 
@@ -94,7 +101,7 @@ function randomBgUrl(id) {
 
 loadNextBackground();
 
-setTimeout(function() {
+setTimeout(function () {
     backgroundLoop();
 }, 8000);
 
@@ -104,7 +111,7 @@ setTimeout(function() {
 
 
 function switchTextOut() {
-    if (switchTextState==0) {
+    if (switchTextState == 0) {
         textOut = switchText1;
         textIn = switchText2;
     }
@@ -112,7 +119,7 @@ function switchTextOut() {
         textOut = switchText2;
         textIn = switchText1;
     }
-    if (slideshowId==0) {
+    if (slideshowId == 0) {
         switchText.classList.add("no-transition");
     }
     textOut.classList.add("up");
@@ -120,31 +127,31 @@ function switchTextOut() {
 }
 
 function switchTextIn() {
-    if (switchTextState==0)
+    if (switchTextState == 0)
         textOut = switchText1;
     else
         textOut = switchText2;
-    if (slideshowId==0) {
+    if (slideshowId == 0) {
         switchText.classList.add("no-transition");
     }
     textOut.classList.add("down");
     textOut.classList.remove("up");
     textOut.textContent = slideshowText[(slideshowId + 2) % slideshow.length];
-    switchTextState = (switchTextState+1)%2;
+    switchTextState = (switchTextState + 1) % 2;
 }
 
 function slideshowLoop() {
     slideshow[slideshowId].classList.add("out");
     switchTextOut();
     console.log("slideshowId " + slideshowId);
-    for (i=0; i<slideshowDots.length; i++) {
+    for (i = 0; i < slideshowDots.length; i++) {
         slideshowDots[i].classList.remove("selected");
-        if (slideshowId==slideshow.length-1 && i+1==slideshowId)
+        if (slideshowId == slideshow.length - 1 && i + 1 == slideshowId)
             slideshowDots[0].classList.add("selected");
-        else if (i==slideshowId)
+        else if (i == slideshowId)
             slideshowDots[i].classList.add("selected");
     }
-    setTimeout(function() {
+    setTimeout(function () {
         slideshow[slideshowId].style.display = "none";
         switchTextIn();
         slideshowId = (slideshowId + 1) % slideshow.length;
@@ -153,7 +160,7 @@ function slideshowLoop() {
 
         switchText.classList.remove("no-transition");
 
-        setTimeout(function() {
+        setTimeout(function () {
             slideshowLoop();
         }, 3000);
     }, 500);
@@ -161,7 +168,7 @@ function slideshowLoop() {
 
 
 // each element except the first
-for (i=1; i<slideshow.length; i++) {
+for (i = 1; i < slideshow.length; i++) {
     slideshow[i].style.display = "none";
     slideshow[i].classList.add("out");
 }
@@ -169,10 +176,10 @@ for (i=1; i<slideshow.length; i++) {
 switchText1.textContent = slideshowText[0];
 switchText2.textContent = slideshowText[1];
 
-setTimeout(function() {
+setTimeout(function () {
     slideshow[0].style.display = "block"
 }, 2000);
 
-setTimeout(function() {
+setTimeout(function () {
     slideshowLoop();
 }, 5000);
