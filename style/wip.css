@@ -125,8 +125,8 @@ body {
     width: 100%;
     margin: 0 auto;
     padding: 10px;
-    background-color: #d6251f;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
     font-weight: 600;
 }
 
@@ -135,8 +135,7 @@ body {
     width: 100%;
     margin: 0 auto;
     padding: 10px;
-    background-color: #d6251f;
-    color: #ffffff;
+    color: #d6251f;
     font-weight: 600;
 }
 
