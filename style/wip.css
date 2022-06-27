@@ -1,4 +1,7 @@
-
+@font-face {
+    font-family: "Raleway";
+    src: url("font/Raleway-VariableFont_wght.ttf") format("truetype");
+}
 
 
 html {
@@ -127,7 +130,7 @@ body {
     height: auto;
     width: 100%;
     margin: 0 auto;
-    padding: 10px;
+    padding: 16px;
     background-color: #ffffff;
     color: #000000;
     font-weight: 600;
@@ -142,8 +145,10 @@ body {
     width: 100%;
     margin: 0 auto;
     padding: 10px;
-    color: #d6251f;
+    color: #ffffff;
     font-weight: 600;
+    background-color: #d6251f;
+    border-radius: 10px;
 }
 
 
@@ -175,12 +180,12 @@ body {
 @keyframes contentStart {
     0% {
         background-size: 35vh;
-        background-position: center top 43vh;
+        background-position: center top 53vh;
     }
 
     23% {
         background-size: 40vh;
-        background-position: center top 45vh;
+        background-position: center top 55vh;
     }
 
     100% {

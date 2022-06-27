@@ -12,7 +12,7 @@ var switchTextState = 0;
 var slideshow = document.getElementsByClassName("demo");
 var slideshowText = ["Franchement, c'est énorme !",
     "Franchement, c'est énorme !",
-    "On est là pour mettre des cathédrales ^^\"",
+    "On est là pour mettre des cathédrales",
     "Découvrez TousAntiChômeur"];
 var slideshowId = 0;
 var firstArgShown = false;
