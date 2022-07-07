@@ -143,7 +143,6 @@ function switchTextIn() {
 function slideshowLoop() {
     slideshow[slideshowId].classList.add("out");
     switchTextOut();
-    console.log("slideshowId " + slideshowId);
     for (i = 0; i < slideshowDots.length; i++) {
         slideshowDots[i].classList.remove("selected");
         if (slideshowId == slideshow.length - 1 && i + 1 == slideshowId)
@@ -152,10 +151,12 @@ function slideshowLoop() {
             slideshowDots[i].classList.add("selected");
     }
     setTimeout(function () {
-        slideshow[slideshowId].style.display = "none";
+        // slideshow[slideshowId].style.display = "none";
+        slideshow[slideshowId].classList.add("free");
         switchTextIn();
         slideshowId = (slideshowId + 1) % slideshow.length;
-        slideshow[slideshowId].style.display = "block";
+        // slideshow[slideshowId].style.display = "block";
+        slideshow[slideshowId].classList.remove("free");
         slideshow[slideshowId].classList.remove("out");
 
         switchText.classList.remove("no-transition");
@@ -168,18 +169,37 @@ function slideshowLoop() {
 
 
 // each element except the first
-for (i = 1; i < slideshow.length; i++) {
-    slideshow[i].style.display = "none";
+for (i = 0; i < slideshow.length; i++) {
+    // slideshow[i].style.display = "none";
     slideshow[i].classList.add("out");
+    slideshow[i].classList.add("free");
 }
 
 switchText1.textContent = slideshowText[0];
 switchText2.textContent = slideshowText[1];
 
 setTimeout(function () {
-    slideshow[0].style.display = "block"
+    // slideshow[0].style.display = "block"
+    slideshow[0].classList.remove("out");
+    slideshow[0].classList.remove("free");
 }, 2000);
 
 setTimeout(function () {
     slideshowLoop();
 }, 5000);
+
+
+
+
+
+// Go down button
+var scroll2_function = background2.addEventListener("scroll", function (event) {
+    // GO DOWN ARROW - DISCOVER
+    if (background2.scrollTop < 100) {
+        document.getElementsByClassName("section_godown")[0].classList.remove("scrolled");
+    } else {
+        document.getElementsByClassName("section_godown")[0].classList.add("scrolled");
+    }
+
+});
+
