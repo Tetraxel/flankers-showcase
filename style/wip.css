@@ -858,7 +858,7 @@ body {
 
 .news-post {
     margin: 0 auto;
-    padding-bottom: 100px;
+    padding-bottom: 70px;
 }
 
 .formation {
@@ -876,7 +876,7 @@ body {
     text-align: center;
 }
 
-.formation a {
+.formation a, .project a {
     margin: 0 3px;
     padding: 6px;
     color: #ffffff;
@@ -885,6 +885,14 @@ body {
     border-radius: 11px;
     text-decoration: none;
 }
+
+.project img {
+    max-width: 90%;
+    width: 800px;
+    height: auto;
+    object-fit: contain;
+}
+
 
 
 iframe {

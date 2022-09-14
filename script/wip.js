@@ -13,7 +13,7 @@ var slideshow = document.getElementsByClassName("demo");
 var slideshowText = ["Franchement, c'est énorme !",
     "Franchement, c'est énorme !",
     "On est là pour mettre des cathédrales",
-    "Découvrez TousAntiChômeur"];
+    "Découvrez la vie de Carlos sur Uber Hits"];
 var slideshowId = 0;
 var firstArgShown = false;
 var slideshowDots = document.getElementsByClassName("slideshow_dot");
